@@ -17,15 +17,18 @@
 
       // Generate 10,000 synthetic customer records
       for (let i = 0; i < 50000; i++) {
+const firstName = faker.name.firstName();
+const lastName= faker.name.lastName();
+
         const customerData = {
-          firstName: faker.name.firstName(),
-          lastName: faker.name.lastName(),
+          firstName: firstName ,
+          lastName: lastName,
           gender: faker.random.arrayElement(["Male", "Female"]),
           birthDate: faker.date.between('1950-01-01', '2000-12-31').toLocaleDateString(),
-          postalCode: faker.address.zipCode(),
+          postalCode: faker.address.zipCode('30####'),
           address: faker.address.streetAddress(),
-          emailAddress: faker.internet.email(),
-          phoneNumber: faker.phone.phoneNumber(),
+          emailAddress: faker.internet.email(firstName,lastName),
+          phoneNumber: faker.phone.phoneNumber('+91 9#########') ,
           city: faker.address.city(),
           designation: faker.name.jobType(),
         };
